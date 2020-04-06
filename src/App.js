@@ -41,6 +41,21 @@ class App extends React.Component {
       })
     })
   }
+
+  addTask = taskName => {
+
+    const newItem = {
+      task: taskName,
+      id: Date.now(),
+      completed: false
+    }
+    this.setState({
+      toDoList: [
+        ...this.state.toDoList,
+        newItem
+      ]
+    })
+  }
   
   
   render() {
@@ -51,7 +66,9 @@ class App extends React.Component {
         <TodoList 
           toggleCheck = {this.toggleCheck}
           toDoList = {this.state.toDoList}/>
-        <TodoForm />
+        <TodoForm 
+          addTask = {this.addTask}
+        />
       </div>
     );
   }
