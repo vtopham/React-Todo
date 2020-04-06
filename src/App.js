@@ -28,7 +28,7 @@ class App extends React.Component {
     }
   }
 
-  toggleCheck = itemId => {
+  toggleCheck = itemId => { //toggle completed status when clicking an item
     this.setState({
       toDoList: this.state.toDoList.map(item => {
         if (itemId === item.id) {
@@ -42,7 +42,7 @@ class App extends React.Component {
     })
   }
 
-  addTask = taskName => {
+  addTask = taskName => { //add a new task
 
     const newItem = {
       task: taskName,
@@ -54,6 +54,14 @@ class App extends React.Component {
         ...this.state.toDoList,
         newItem
       ]
+    })
+  }
+
+  clearCompleted = _ => { //clear any tasks that are completed
+    this.setState({
+      toDoList: this.state.toDoList.filter(task => {
+        return task.completed === false;
+      })
     })
   }
   
@@ -68,6 +76,7 @@ class App extends React.Component {
           toDoList = {this.state.toDoList}/>
         <TodoForm 
           addTask = {this.addTask}
+          clearCompleted = {this.clearCompleted}
         />
       </div>
     );

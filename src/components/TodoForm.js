@@ -23,12 +23,17 @@ class TodoForm extends React.Component {
         console.log(event.target.value)
     }
 
+    handleClear = event => {
+        event.preventDefault();
+        this.props.clearCompleted();
+    }
+
     render() {
         return (
             <form className = "todoForm">
                 <input onChange = {this.handleChanges} type = "text" name = "todoInput"/>
                 <button onClick = {this.handleAdd}>Add Todo</button>
-                <button>Clear Completed</button>
+                <button onClick = {this.handleClear}>Clear Completed</button>
             </form>
         )
     }
