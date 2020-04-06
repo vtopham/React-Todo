@@ -64,6 +64,12 @@ class App extends React.Component {
       })
     })
   }
+
+  clearAll = _ => {
+    this.setState({
+      toDoList: []
+    })
+  }
   
   
   render() {
@@ -77,6 +83,7 @@ class App extends React.Component {
         <TodoForm 
           addTask = {this.addTask}
           clearCompleted = {this.clearCompleted}
+          clearAll = {this.clearAll}
         />
       </div>
     );

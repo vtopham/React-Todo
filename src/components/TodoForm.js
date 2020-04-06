@@ -24,8 +24,13 @@ class TodoForm extends React.Component {
     }
 
     handleClear = event => {
-        event.preventDefault();
+        event.preventDefault(); //what's in the gif
         this.props.clearCompleted();
+    }
+
+    handleWipe = event => { //why not
+        event.preventDefault();
+        this.props.clearAll();
     }
 
     render() {
@@ -34,6 +39,7 @@ class TodoForm extends React.Component {
                 <input onChange = {this.handleChanges} type = "text" name = "todoInput"/>
                 <button onClick = {this.handleAdd}>Add Todo</button>
                 <button onClick = {this.handleClear}>Clear Completed</button>
+                <button onClick = {this.handleWipe}>Clear All</button>
             </form>
         )
     }
