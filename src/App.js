@@ -1,5 +1,7 @@
 import React from 'react';
 import TodoList from "./components/TodoList"
+import TodoForm from "./components/TodoForm"
+import "./components/Todo.css"
 
 const toDos = [
   {
@@ -26,12 +28,18 @@ class App extends React.Component {
     }
   }
 
-  addItem = item => {
-
-  }
-
-  clearCompleted = list => {
-
+  toggleCheck = itemId => {
+    this.setState({
+      toDoList: this.state.toDoList.map(item => {
+        if (itemId === item.id) {
+          return {
+            ...item,
+            completed: !item.completed //if the item matches, return a new copy of item with opposite item
+          }
+        }
+        return item //otherwise, just return the item
+      })
+    })
   }
   
   
@@ -40,7 +48,10 @@ class App extends React.Component {
       <div>
         <h2>Todo List: MVP</h2>
 
-        <TodoList />
+        <TodoList 
+          toggleCheck = {this.toggleCheck}
+          toDoList = {this.state.toDoList}/>
+        <TodoForm />
       </div>
     );
   }
